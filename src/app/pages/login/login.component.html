@@ -1,0 +1,22 @@
+<div class="firstContainer"> 
+    <div class="secondContainer">
+        <div class="boxLoginContainer">
+            <div class="textLoginContainer">
+                <a>Login</a>
+            </div>
+            <div class="inputContainer">
+                <input type="text" placeholder="USUÁRIO" [ngModel]="getUser()" (ngModelChange)="setUser($event)">
+                <!-- <input type="text" placeholder="USUÁRIO" [(ngModel)]="user"> -->
+                <input type="text" placeholder="SENHA" [ngModel]="getPassword()" (ngModelChange)="setPassword($event)">
+            </div>            
+            <div class="buttonEnter" (click)="login()">
+                <a>Pokédex</a>
+            </div>
+            <div class="buttonRegister" (click)="windowOpenCadastro('')">
+                <a>Não possui conta? <b>Cadastre-se</b></a>
+            </div>  
+        </div>
+    </div>
+    <app-cadastro> </app-cadastro>       
+</div>
+
