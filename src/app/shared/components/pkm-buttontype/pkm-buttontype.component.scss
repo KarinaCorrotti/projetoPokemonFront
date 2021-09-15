@@ -1,0 +1,34 @@
+div {
+    height: auto;
+    width: fit-content;
+    background-color: white;
+    border-radius: 180px;                
+    display: flex;
+    justify-content: center;
+    align-items: center;                
+    span {
+        visibility: hidden;
+        opacity: 0;                    
+        transition: opacity 0.3s;
+        font-size: 18px;                   
+        position: absolute;                               
+    }
+    &:hover {
+        img{
+            opacity: 0.3;
+        }
+        cursor: pointer;
+        span {
+            visibility: visible;
+            opacity: 1;                        
+            transition: opacity 0.3s;
+            font-size: 18px;
+            font-weight: bold;   
+            position: absolute;                      
+        }
+    }
+} 
+img {
+    height: auto;
+    width: 4vw;
+}                   

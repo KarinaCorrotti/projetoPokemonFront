@@ -1,0 +1,63 @@
+<div class="cardPokemon">
+    <div class="topCardPokemon">
+        <div class="imagePokemon">
+            <img src="{{spriteUrl}}{{pkmData.id}}.png" alt="">
+        </div>
+        <div class="informationPokemon">
+            <span>
+                <span class="boldText"> Id </span> {{pkmData.id}}  
+            </span>                                        
+        </div>
+    </div> 
+    <hr> 
+    <div class="middleAndBottomContainer">
+        <div class="middleCardPokemon">
+            <div class="name">
+                <span>
+                    <span class="boldText"> Nome: </span> {{pkmData.name.english}} 
+                </span>                        
+            </div>
+            <div class="Power">
+                <div>
+                    <span>
+                        <span class="boldText"> HP: </span> {{pkmData.base.HP}}
+                    </span>                                                        
+                </div>
+                 <div>
+                    <span>
+                        <span class="boldText">Ataque: </span> {{pkmData.base.Attack}}
+                    </span>                            
+                 </div>  
+                 <div>
+                    <span>
+                        <span class="boldText">Defesa: </span> {{pkmData.base.Defense}}
+                    </span>  
+                 </div>   
+                 <div>
+                    <span>
+                        <span class="boldText">Velocidade: </span> {{pkmData.base.Speed}}
+                    </span> 
+                 </div>                   
+            </div>
+        </div> 
+        <div class="bottonCardPokemon">
+            <div class="elementPokemon">
+                <img class="elementCard" *ngFor="let type of pkmData.type" src="../../../../assets/{{type.toLowerCase()}}.png" alt="">                  
+            </div> 
+            <div class="choosePokemon" (click)="chooseOpen(pkmData.id)"> 
+                <img class="pokebola" src="../../../../assets/pokebolas.png">                                                                                                       
+            </div>     
+        </div> 
+        <div class="chooseContainer {{pkmData.id}}">
+            <div class="topChoose">
+                <span class="material-icons" (click)="chooseClose(pkmData.id)">clear</span>
+            </div>
+            <div class="middleChoose">
+                <div *ngFor="let ball of selectedPokemonList; let i = index;" class="ballChoose" (click)="selectPokemon(pkmData, i)">
+                    <span class="material-icons" *ngIf="selectedPokemonList[i] === null">add</span>
+                    <img src="{{spriteUrl}}{{selectedPokemonList[i]}}.png" *ngIf="selectedPokemonList[i] !== null">                                 
+                </div>
+            </div>                        
+        </div> 
+    </div>                                                           
+</div> 

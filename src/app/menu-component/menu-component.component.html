@@ -1,123 +1,40 @@
 <div class="masterContainer">
-    <div class="menuContainer">
+    <div class="menuContainer">     
         <div class="buttonPokemon">
-            <div class="fireButton" (click)="changeType('Fire')">
-                <img src="../../assets/fire.png" alt="">
-                <span class="spanButton">
-                    Fogo
-                </span>                
+            <div *ngFor="let type of pokemonTypes">   
+                <app-pkm-buttontype  
+                    [btnData] = "type"
+                    (onClick) = "changeType($event)"
+                ></app-pkm-buttontype>  
             </div>
-            <div class="waterButton" (click)="changeType('Water')">
-                <img src="../../assets/water.png" alt="">
-                <span class="spanButton">
-                    Agua
-                </span>
-            </div>
-            <div class="grassButton" (click)="changeType('Grass')">
-                <img src="../../assets/grass.png" alt="">
-                <span class="spanButton">
-                    Grama
-                </span>
-            </div>
-            <div class="normalButton" (click)="changeType('Normal')">
-                <img src="../../assets/normal.png" alt="">
-                <span class="spanButton">
-                    Normal
-                </span>
-            </div>
-            <div class="electricButton" (click)="changeType('Electric')">
-                <img src="../../assets/electric.png" alt="">
-                <span class="spanButton">
-                    Eletrico
-                </span>
-            </div>
-            <div class="fightingButton" (click)="changeType('Fighting')">
-                <img src="../../assets/fighting.png" alt="">
-                <span class="spanButton">
-                    Lutador
-                </span>
-            </div>            
-            <div class="psychicButton" (click)="changeType('Psychic')">
-                <img src="../../assets/psychic.png" alt="">
-                <span class="spanButton">
-                    Psiquico
-                </span>
-            </div>
+            
         </div>        
     </div>
     <div class="contentContainer">        
-        <div class="topContainer"></div>
-        <div class="downContainer" *ngIf="viewMode === 'cards'">            
-            <div *ngFor="let pokemon of filterPokedexByType()" class="cardPokemon" 
-            (click)="selectPokemon(pokemon)">
-                <div class="topCardPokemon">
-                    <div class="imagePokemon">
-                        <img src="{{spriteUrl}}{{pokemon.id}}.png" alt="">
-                    </div>
-                    <div class="informationPokemon">
-                        <span>
-                            <span class="boldText"> Id </span> {{pokemon.id}}  
-                        </span>                                                                                                                    
-                    </div>
-                </div>  
-                <div class="middleCardPokemon">
-                    <div class="name">
-                        <span>
-                            <span class="boldText"> Nome: </span> {{pokemon.name.english}} 
-                        </span>                        
-                    </div>
-                    <div class="Power">
-                        <div>
-                            <span>
-                                <span class="boldText"> HP: </span> {{pokemon.base.HP}}
-                            </span>                                                        
-                        </div>
-                         <div>
-                            <span>
-                                <span class="boldText">Ataque: </span> {{pokemon.base.Attack}}
-                            </span>                            
-                         </div>  
-                         <div>
-                            <span>
-                                <span class="boldText">Defesa: </span> {{pokemon.base.Defense}}
-                            </span>  
-                         </div>   
-                         <div>
-                            <span>
-                                <span class="boldText">Velocidade: </span> {{pokemon.base.Speed}}
-                            </span> 
-                         </div>                   
-                    </div>
-                </div>     
-                <div class="bottonCardPokemon">
-                    <img *ngFor="let type of pokemon.type" src="../../assets/{{type.toLowerCase()}}.png" alt="">
-                </div>         
-            </div>            
-                <!-- <img src="{{spriteUrl}}{{pokemon.id}}.png" alt="" *ngIf="filterPokemon(pokemon)"> -->
-                <!-- <span *ngIf="filterPokemon(pokemon)">
-                    {{pokemon.name.english}}
-                </span>                -->                     
-        </div>
-        <div class="downContainer detail" *ngIf="viewMode === 'detail'">            
-            <div class="nameDetail">
-                {{selectedPokemon?.name?.english}}
+        <div class="topContainer">
+            <div class="rightContainer">
+                <div class="userContainer">                    
+                    <img src="../../assets/{{usersService.getUserGender() === 1 ? 'girl' : 'boy'}}.png">
+                    <div class="nameMenu">
+                        <a>{{usersService.getUserName()}}</a> 
+                        <span class="material-icons iconMenu">keyboard_arrow_down</span>
+                        <div class="userContent">
+                            <a>Perfil</a>
+                            <a>Pokémons</a>
+                            <a>Sair</a>
+                        </div>     
+                    </div>                                         
+                    <!-- <a>Pokémon: {{usersService.getUserPokemon()}}</a> -->
+                    <!-- <img src="{{spriteUrl}}{{usersService.getUserPokemon()}}.png" alt=""> -->
+                </div>
             </div>
-            <div class="detailContainer">
-                <div class="imagePokemonDetail">
-                    <img src="{{spriteUrl}}{{selectedPokemon?.id}}.png" alt="">
-                </div>  
-                <div class="characterDetail">    
-                    <div class="elementContainer">
-                        <span class="boldText fontDetail"> Elementos: </span>
-                        <img *ngFor="let type of selectedPokemon?.type" src="../../assets/{{type.toLowerCase()}}.png" alt="">                        
-                    </div>                
-                    <div class="informationContainer">
-                        <span>
-                            {{selectedPokemon?.base?.HP}}
-                        </span>
-                    </div>    
-                </div>  
-            </div>                    
         </div>
+        <div class="downContainer" *ngIf="viewMode === 'cards'">    
+            <div *ngFor="let pokemon of filterPokedexByType()">
+                <app-pkm-card 
+                    [pkmData]="pokemon"                
+                ></app-pkm-card>  
+            </div>                             
+        </div>               
     </div>
 </div>

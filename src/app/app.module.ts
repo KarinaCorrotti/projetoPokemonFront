@@ -8,13 +8,18 @@ import { LoginComponent } from './pages/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { PokedexComponent } from './pages/pokedex/pokedex.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CadastroComponent } from './pages/cadastro/cadastro.component'
+import { CadastroComponent } from './pages/cadastro/cadastro.component';
+import { ModalMessageComponent } from './pages/modal-message/modal-message.component'
+import { MessageService } from './service/message.service';
+import { UsersService } from './service/users.service';
+import { SharedModule } from './shared/shared.module';
 
 const appRoutes: Routes = [
   {path: 'contato', component: ContatoComponent},
   {path: 'login', component: LoginComponent},
   {path: 'pokedex', component: PokedexComponent},
   {path: 'cadastro', component: CadastroComponent},
+  {path: 'message', component: ModalMessageComponent},
   { path: '',
     redirectTo: '/login',
     pathMatch: 'full'
@@ -29,18 +34,19 @@ const appRoutes: Routes = [
     ContatoComponent,
     LoginComponent,
     PokedexComponent,
-    CadastroComponent
+    CadastroComponent,
+    ModalMessageComponent,    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only      
+      appRoutes,      
     ),
     HttpClientModule,
+    SharedModule,
   ],
-  providers: [],
+  providers: [MessageService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

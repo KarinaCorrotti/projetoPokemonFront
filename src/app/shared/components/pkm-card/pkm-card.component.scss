@@ -1,0 +1,140 @@
+
+.cardPokemon {
+    width: 140px;
+    height: fit-content;
+    background-color: white;
+    border: 1px solid rgb(212, 212, 212);
+    margin: 10px;
+    position: relative;
+    box-shadow: 0 4px 17px rgba(0,0,0,0.2);
+    padding: 5px;
+    border-radius: 10px;  
+    .boldText {
+        font-weight: bold;                    
+        color: gray;
+        &.fontDetail {
+            font-size: 20px;
+        }  
+    }                          
+    .topCardPokemon {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .imagePokemon {
+            width: 50%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;                          
+            img {
+                width: 100%;
+            }                 
+        }
+        .informationPokemon {                        
+            position: absolute;
+            top: 10px;
+            right: 10px;                                                                   
+        }
+    }
+    hr {
+        margin: 0px;                    
+        border: 0px;
+        border-bottom: 1px solid gray;
+    }
+    .middleAndBottomContainer{
+        position: relative;
+        .middleCardPokemon {
+            width: fit-content;
+            padding: 0.5vw;
+            .name {
+                display: flex;                        
+            }
+            .power {
+                display: flex;
+            }
+            span {
+                font-size: 1.0vw;                            
+            }
+        }
+        .bottonCardPokemon {
+            display: flex;
+            align-items: center;
+            .elementPokemon {
+                width: 100%;
+                padding: 0.3vw;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;                   
+                .elementCard {
+                    width: 1.5vw;
+                    margin-right: 5px;                        
+                }
+            } 
+            .choosePokemon {
+                padding: 0.3vw;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                img {
+                    width: 2.8vh;                            
+                }                                                                            
+            }
+        }
+        .chooseContainer {
+            background-color: rgb(255, 255, 255);                        
+            width: 100%;
+            position: absolute;
+            height: calc(100% - 5px);
+            bottom: 0;
+            visibility: hidden;
+            transition: 0.5s;
+            opacity: 0;
+            z-index: 3;
+            &.open{
+                visibility:visible;
+                opacity: 1;
+            }
+            .topChoose{
+                display: flex;
+                flex-direction: row-reverse;
+                span {
+                    cursor: pointer;
+                    font-size: 1.4vw;
+                    margin-right: 0.1vw;
+                }
+            }
+            .middleChoose {                            
+                display: flex;
+                width: 100%;
+                height: 85%;
+                flex-wrap: wrap;
+                .ballChoose {     
+                    background-color:white;                          
+                    width: 27%;
+                    height: 38%;
+                    margin: 3%;
+                    border-radius: 100%;
+                    box-shadow: rgb(68, 67, 67);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    box-shadow: 0 4px 17px rgba(0,0,0,0.2);
+                    span {
+                        cursor: pointer;                                    
+                    }
+                    img{
+                        width: 100%;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }  
+    }                                           
+}
+// @media only screen and(max-width: 1090px){
+//     .cardPokemon {
+//         width: calc(20% - 32px) !important;
+//     }
+// }

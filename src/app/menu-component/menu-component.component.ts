@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../service/users.service';
+import { Router } from '@angular/router'; 
+import { TYPE_POKEMON } from '../constants/typepokedex.constants';
+
 
 @Component({
   selector: 'app-menu-component',
@@ -10,12 +14,15 @@ export class MenuComponent implements OnInit {
   public pokemonType = "";
   public spriteUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
   public viewMode = 'cards';
-  public selectedPokemon;
-  constructor() { }
+  public pokemonTypes = TYPE_POKEMON;
+ 
+  constructor(public usersService: UsersService, private router: Router) { 
+    if(usersService.getUserName()===''){
+      this.router.navigateByUrl('/login')
+    }
+  }
 
   ngOnInit() {
-    console.log(this.pokedex)
-    console.log(this.pokedex[5].type.includes('Fire'))
   }
 
   public filterPokedexByType(){    
@@ -29,15 +36,11 @@ export class MenuComponent implements OnInit {
     });
     return filteredPokedex;       
   }
-
-  public selectPokemon(pokemon){
-    this.viewMode='detail';
-    this.selectedPokemon = pokemon;    
-  }
+  
 
   public changeType(type){
+    console.log(type)
     this.viewMode='cards';
     this.pokemonType=type;
-  }
-    
+  }  
 }

@@ -1,19 +1,34 @@
-<div class="firstContainer"> 
+<div class="firstContainer">        
+    <div class="logoContainer">        
+        <div class="logo">
+            <img src="../../../assets/pikachu.login.png">
+            <span>POKÉDEX</span>
+        </div>        
+    </div>   
     <div class="secondContainer">
-        <div class="boxLoginContainer">
-            <div class="textLoginContainer">
-                <a>Login</a>
-            </div>
+        <div class="boxLoginContainer">            
             <div class="inputContainer">
                 <input type="text" placeholder="USUÁRIO" [ngModel]="getUser()" (ngModelChange)="setUser($event)">
                 <!-- <input type="text" placeholder="USUÁRIO" [(ngModel)]="user"> -->
-                <input type="text" placeholder="SENHA" [ngModel]="getPassword()" (ngModelChange)="setPassword($event)">
+                <div class="passwordContainer">
+                    <input [type]="passwordType" placeholder="SENHA" [ngModel]="getPassword()" (ngModelChange)="setPassword($event)">
+                    <span class="material-icons" (click)="changePasswordType()">{{passwordIcon}}</span>
+                </div>                
             </div>            
-            <div class="buttonEnter" (click)="login()">
-                <a>Pokédex</a>
+            <div class="buttonEnter" (click)="login()">  
+                <img class="buttonPikachu" src="../../../assets/pikachu.png">             
+                <div class="pokeballTop">
+                    <div class="pokeballMiddle">
+                        <div class="pokeballMiddleMiddle"></div>
+                    </div>
+                </div>
+                <div class="pokeballBottom"></div>                
             </div>
-            <div class="buttonRegister" (click)="windowOpenCadastro('')">
-                <a>Não possui conta? <b>Cadastre-se</b></a>
+            <div class="messageContainer">
+                <a>{{messageService.getMessage()}}</a>  
+            </div>
+            <div class="buttonRegister">
+                <a>Não possui conta? <b (click)="windowOpenCadastro('')">Cadastre-se</b></a>
             </div>  
         </div>
     </div>
