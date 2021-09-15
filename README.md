@@ -5,7 +5,7 @@
 
 ## 🛠 Tecnologias Usadas
 
-* Angular: Angular é uma plataforma e framework para construção da interface de aplicações usando HTML, CSS e, principalmente, JavaScript, criada pelos desenvolvedores da Google. Neste projeto de estudo foquei em aplicar componentização;
+* Angular: é uma plataforma e framework para construção da interface de aplicações usando HTML, CSS e, principalmente, JavaScript, criada pelos desenvolvedores da Google. Neste projeto de estudo foquei em aplicar componentização;
 
 ## Imagem da Aplicação
 <h1 align="center">
